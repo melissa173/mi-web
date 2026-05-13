@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Melissa Zamorano Levy · Salud Digital & Informática Biomédica</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --fondo: #0B0020;
+      --acento: #8A5CFF;
+      --borde: #00E0FF;
+      --texto: #EAF7FF;
+    }
+
+    body {
+      margin: 0;
+      background: var(--fondo);
+      color: var(--texto);
+      font-family: system-ui, sans-serif;
+    }
+
+    /* ENCABEZADO */
+    .encabezado {
+      text-align: center;
+      padding-top: 1rem;
+    }
+
+    .fotos-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 4rem;
+    }
+
+    .fotos-header h1 {
+      color: var(--acento);
+      font-size: 2rem;
+      letter-spacing: 0.15em;
+      text-shadow: 0 0 20px var(--acento);
+    }
+
+    /* FOTOS ANIMADAS */
+    .fotos-header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid var(--borde);
+      object-fit: cover;
+      animation: glow 3s infinite ease-in-out;
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 15px var(--borde); }
+      50% { box-shadow: 0 0 35px var(--acento); }
+      100% { box-shadow: 0 0 15px var(--borde); }
+    }
+
+    /* ACREDITACIÓN GIRANDO */
+    .anim-giro {
+      animation: giro 12s linear infinite;
+    }
+
+    @keyframes giro {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* BANNER FUTURISTA */
+    .banner-futurista {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      border-top: 2px solid var(--borde);
+      border-bottom: 2px solid var(--borde);
+      overflow: hidden;
+    }
+
+    .banner-futurista img {
+      width: 100%;
+      max-height: 260px;
+      animation: mover 18s infinite linear, brillo 10s infinite alternate ease-in-out;
+    }
+
+    @keyframes mover {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-10%); }
+    }
+
+    @keyframes brillo {
+      0% { filter: hue-rotate(0deg) brightness(1); }
+      100% { filter: hue-rotate(45deg) brightness(1.3); }
+    }
+
+    /* INSIGNIA EPTI */
+    .insignia-epti {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .insignia-epti img {
+      width: 190px;
+      animation: holograma 4s infinite ease-in-out;
+      filter: drop-shadow(0 0 20px var(--borde));
+    }
+
+    @keyframes holograma {
+      0% { filter: drop-shadow(0 0 10px var(--borde)); }
+      50% { filter: drop-shadow(0 0 30px var(--acento)); }
+      100% { filter: drop-shadow(0 0 10px var(--borde)); }
+    }
+
+    /* SECCIONES */
+    .section {
+      padding: 2rem 1.5rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--borde);
+      border-radius: 0.8rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 25px rgba(0, 224, 255, 0.25);
+      transition: 0.4s ease;
+    }
+
+    h2 {
+      color: var(--acento);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px var(--acento);
+    }
+
+    .checklist li {
+      list-style: "✔  ";
+      margin-bottom: 0.4rem;
+    }
+
+    .downloads li {
+      margin-bottom: 0.6rem;
+    }
+
+    .downloads a {
+      color: var(--acento);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .downloads a:hover {
+      color: var(--borde);
+      text-shadow: 0 0 10px var(--borde);
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      opacity: 0.7;
+      font-size: 0.85rem;
+    }
+
+    /* ============================
+       ✨ ANIMACIONES FUTURISTAS EXTRA
+       ============================ */
+
+    .section, .card, h2, h3 {
+      animation: fadeIn 1.2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      animation: neonPulse 3s infinite ease-in-out;
+    }
+
+    @keyframes neonPulse {
+      0% { text-shadow: 0 0 10px var(--acento); }
+      50% { text-shadow: 0 0 25px var(--borde); }
+      100% { text-shadow: 0 0 10px var(--acento); }
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 35px rgba(0, 224, 255, 0.45);
+    }
+
+    img:hover {
+      filter: drop-shadow(0 0 15px var(--borde));
+      transform: scale(1.03);
+      transition: 0.4s ease;
+    }
+
+    /* ============================
+       📱 RESPONSIVE
+       ============================ */
+
+    @media (max-width: 768px) {
+
+      .fotos-header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0;
+      }
+
+      .fotos-header img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .fotos-header h1 {
+        font-size: 1.4rem;
+        text-align: center;
+        line-height: 1.3;
+      }
+
+      .banner-futurista img {
+        max-height: 180px;
+      }
+
+      .insignia-epti img {
+        width: 150px;
+      }
+
+      .section {
+        padding: 1.5rem 1rem;
+      }
+
+      .card {
+        padding: 1.2rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+        text-align: center;
+      }
+
+      h3 {
+        font-size: 1.1rem;
+      }
+
+      .downloads a:hover {
+        transform: none;
+      }
+
+      img:hover {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .fotos-header img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .fotos-header h1 {
+        font-size: 1.2rem;
+      }
+
+      .banner-futurista img {
+        max-height: 150px;
+      }
+
+      .card {
+        padding: 1rem;
+      }
+
+      .downloads a {
+        font-size: 0.9rem;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ENCABEZADO -->
+  <header class="encabezado">
+    <div class="fotos-header">
+      <img src="foto-evy.png" alt="Foto Evy Izquierda">
+      <h1>MELISSA ZAMORANO LEVY</h1>
+      <img src="acreditacion-nueva.png" alt="Acreditación Nueva" class="anim-giro">
+    </div>
+
+    <div class="banner-futurista">
+      <img src="imagen-futurista.png" alt="Imagen futurista">
+    </div>
+
+    <div class="insignia-epti">
+      <img src="insignia-epti.png" alt="Insignia EPTI">
+    </div>
+  </header>
+
+  <!-- PERFIL PROFESIONAL -->
+  <section id="perfil-profesional" class="section">
+    <h2>Perfil Profesional</h2>
+
+    <div class="card">
+      <p>
+        Tecnóloga en Informática Biomédica y TENS con 16 años de experiencia clínica y 
+        trayectoria reciente en soporte e implementación de sistemas HIS (TrakCare).
+      </p>
+
+      <p>
+        Especialista en gestión de incidencias bajo metodologías ITIL, levantamiento de 
+        requerimientos, documentación funcional y capacitación masiva de usuarios 
+        clínicos y administrativos.
+      </p>
+
+      <p>
+        Conocimientos en interoperabilidad y estándares (HL7, FHIR, CIE‑11, SNOMED CT), 
+        con base en SQL y Excel avanzado para análisis y mejora operativa.
+      </p>
+
+      <p>
+        Orientada a roles de Analista/Consultora HIS, Analista de Información/BI o 
+        Proyectos TI en Salud.
+      </p>
+    </div>
+  </section>
+
+  <!-- COMPETENCIAS PROFESIONALES -->
+  <section id="competencias" class="section">
+    <h2>Competencias Profesionales</h2>
+
+    <div class="card">
+      <h3>Informática Biomédica</h3>
+      <ul class="checklist">
+        <li>Implementación y soporte funcional HIS</li>
+        <li>Gestión de incidencias y continuidad operativa</li>
+        <li>Optimización de flujos clínicos</li>
+        <li>Calidad y trazabilidad de datos clínicos</li>
+        <li>Interoperabilidad (HL7, FHIR, SNOMED CT)</li>
+        <li>Capacitación y adopción digital</li>
+        <li>Evaluación de proyectos TI</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Técnico Superior de Enfermería (TENS)</h3>
+      <ul class="checklist">
+        <li>Administración de medicamentos</li>
+        <li>Signos vitales y registros</li>
+        <li>Curaciones simples y avanzadas</li>
+        <li>Cuidados respiratorios</li>
+        <li>Manejo de traqueostomía</li>
+        <li>Manejo de colostomía</li>
+        <li>Alimentación asistida</li>
+        <li>Vacunación particular y a domicilio</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Evaluación de Proyectos TI</h3>
+      <p>
+        Evalúo proyectos TI determinando su viabilidad y rentabilidad, aplicando técnicas de 
+        factibilidad, flujos de caja e indicadores financieros para asesorar si una iniciativa 
+        digital conviene o no a la organización.
+      </p>
+    </div>
+  </section>
+
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Melissa Zamorano Levy · Salud Digital & Informática Biomédica</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --fondo: #0B0020;
+      --acento: #8A5CFF;
+      --borde: #00E0FF;
+      --texto: #EAF7FF;
+    }
+
+    body {
+      margin: 0;
+      background: var(--fondo);
+      color: var(--texto);
+      font-family: system-ui, sans-serif;
+    }
+
+    /* ENCABEZADO */
+    .encabezado {
+      text-align: center;
+      padding-top: 1rem;
+    }
+
+    .fotos-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 4rem;
+    }
+
+    .fotos-header h1 {
+      color: var(--acento);
+      font-size: 2rem;
+      letter-spacing: 0.15em;
+      text-shadow: 0 0 20px var(--acento);
+    }
+
+    /* FOTOS ANIMADAS */
+    .fotos-header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid var(--borde);
+      object-fit: cover;
+      animation: glow 3s infinite ease-in-out;
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 15px var(--borde); }
+      50% { box-shadow: 0 0 35px var(--acento); }
+      100% { box-shadow: 0 0 15px var(--borde); }
+    }
+
+    /* ACREDITACIÓN GIRANDO */
+    .anim-giro {
+      animation: giro 12s linear infinite;
+    }
+
+    @keyframes giro {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* BANNER FUTURISTA */
+    .banner-futurista {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      border-top: 2px solid var(--borde);
+      border-bottom: 2px solid var(--borde);
+      overflow: hidden;
+    }
+
+    .banner-futurista img {
+      width: 100%;
+      max-height: 260px;
+      animation: mover 18s infinite linear, brillo 10s infinite alternate ease-in-out;
+    }
+
+    @keyframes mover {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-10%); }
+    }
+
+    @keyframes brillo {
+      0% { filter: hue-rotate(0deg) brightness(1); }
+      100% { filter: hue-rotate(45deg) brightness(1.3); }
+    }
+
+    /* INSIGNIA EPTI */
+    .insignia-epti {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .insignia-epti img {
+      width: 190px;
+      animation: holograma 4s infinite ease-in-out;
+      filter: drop-shadow(0 0 20px var(--borde));
+    }
+
+    @keyframes holograma {
+      0% { filter: drop-shadow(0 0 10px var(--borde)); }
+      50% { filter: drop-shadow(0 0 30px var(--acento)); }
+      100% { filter: drop-shadow(0 0 10px var(--borde)); }
+    }
+
+    /* SECCIONES */
+    .section {
+      padding: 2rem 1.5rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--borde);
+      border-radius: 0.8rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 25px rgba(0, 224, 255, 0.25);
+      transition: 0.4s ease;
+    }
+
+    h2 {
+      color: var(--acento);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px var(--acento);
+      animation: neonPulse 3s infinite ease-in-out;
+    }
+
+    @keyframes neonPulse {
+      0% { text-shadow: 0 0 10px var(--acento); }
+      50% { text-shadow: 0 0 25px var(--borde); }
+      100% { text-shadow: 0 0 10px var(--acento); }
+    }
+
+    .checklist li {
+      list-style: "✔  ";
+      margin-bottom: 0.4rem;
+    }
+
+    .downloads li {
+      margin-bottom: 0.6rem;
+    }
+
+    .downloads a {
+      color: var(--acento);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .downloads a:hover {
+      color: var(--borde);
+      text-shadow: 0 0 10px var(--borde);
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      opacity: 0.7;
+      font-size: 0.85rem;
+    }
+
+    /* ANIMACIONES DE ENTRADA */
+    .section, .card, h2, h3 {
+      animation: fadeIn 1.2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .fotos-header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0;
+      }
+
+      .fotos-header img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .fotos-header h1 {
+        font-size: 1.4rem;
+        text-align: center;
+        line-height: 1.3;
+      }
+
+      .banner-futurista img {
+        max-height: 180px;
+      }
+
+      .insignia-epti img {
+        width: 150px;
+      }
+
+      .section {
+        padding: 1.5rem 1rem;
+      }
+
+      .card {
+        padding: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .fotos-header img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .fotos-header h1 {
+        font-size: 1.2rem;
+      }
+
+      .banner-futurista img {
+        max-height: 150px;
+      }
+
+      .card {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ENCABEZADO -->
+  <header class="encabezado">
+    <div class="fotos-header">
+      <img src="foto-evy.png" alt="Foto Evy">
+      <h1>MELISSA ZAMORANO LEVY</h1>
+      <img src="acreditacion-nueva.png" alt="Acreditación Nueva" class="anim-giro">
+    </div>
+
+    <div class="banner-futurista">
+      <img src="imagen-futurista.png" alt="Imagen futurista">
+    </div>
+
+    <div class="insignia-epti">
+      <img src="insignia-epti.png" alt="Insignia EPTI">
+    </div>
+  </header>
+
+  <!-- PERFIL PROFESIONAL -->
+  <section id="perfil-profesional" class="section">
+    <h2>Perfil Profesional</h2>
+
+    <div class="card">
+      <p>Tecnóloga en Informática Biomédica y TENS con 16 años de experiencia clínica y trayectoria reciente en soporte e implementación de sistemas HIS (TrakCare).</p>
+      <p>Especialista en gestión de incidencias bajo metodologías ITIL, levantamiento de requerimientos, documentación funcional y capacitación masiva de usuarios clínicos y administrativos.</p>
+      <p>Conocimientos en interoperabilidad y estándares (HL7, FHIR, CIE‑11, SNOMED CT), con base en SQL y Excel avanzado para análisis y mejora operativa.</p>
+      <p>Orientada a roles de Analista/Consultora HIS, Analista de Información/BI o Proyectos TI en Salud.</p>
+    </div>
+  </section>
+
+  <!-- COMPETENCIAS -->
+  <section id="competencias" class="section">
+    <h2>Competencias Profesionales</h2>
+
+    <div class="card">
+      <h3>Informática Biomédica</h3>
+      <ul class="checklist">
+        <li>Implementación y soporte funcional HIS</li>
+        <li>Gestión de incidencias y continuidad operativa</li>
+        <li>Optimización de flujos clínicos</li>
+        <li>Calidad y trazabilidad de datos clínicos</li>
+        <li>Interoperabilidad (HL7, FHIR, SNOMED CT)</li>
+        <li>Capacitación y adopción digital</li>
+        <li>Evaluación de proyectos TI</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Técnico Superior de Enfermería (TENS)</h3>
+      <ul class="checklist">
+        <li>Administración de medicamentos</li>
+        <li>Signos vitales y registros</li>
+        <li>Curaciones simples y avanzadas</li>
+        <li>Cuidados respiratorios</li>
+        <li>Manejo de traqueostomía</li>
+        <li>Manejo de colostomía</li>
+        <li>Alimentación asistida</li>
+        <li>Vacunación particular y a domicilio</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Evaluación de Proyectos TI</h3>
+      <p>Evalúo proyectos TI determinando su viabilidad y rentabilidad, aplicando técnicas de factibilidad, flujos de caja e indicadores financieros para asesorar si una iniciativa digital conviene o no a la organización.</p>
+    </div>
+  </section>
+
+  <!-- DOCUMENTOS -->
+  <section id="documentos" class="section">
+    <h2>Documentos Oficiales</h2>
+
+    <div class="card">
+      <ul class="downloads">
+        <li><a href="docs/titulo-tecnologa.pdf" download>📄 Título Tecnóloga en Informática Biomédica</a></li>
+        <li><a href="docs/titulo-tens.pdf" download>📄 Título Técnico en Enfermería (TENS)</a></li>
+        <li><a href="docs/certificado-epti.pdf" download>📄 Certificado Evaluación de Proyectos TI</a></li>
+      </ul>
+
+      <h3>Certificados Internacionales OPS/PAHO</h3>
+
+      <ul class="downloads">
+        <li><a href="docs/sistemasinformacionsalud.pdf" download>🌐 Sistemas de Información en Salud</a></li>
+        <li><a href="docs/interoperabilidadfhir.pdf" download>🔗 Interoperabilidad y estándar FHIR</a></li>
+        <li><a href="docs/cie-11.pdf" download>📘 CIE‑11</a></li>
+        <li><a href="docs/monitoreoaps.pdf" download>🏥 Monitoreo y Evaluación de Sistemas de Salud</a></li>
+        <li><a href="docs/prevencioninfecciones.pdf" download>🛡️ Prevención y control de infecciones</a></li>
+        <li><a href="docs/higienemanos.pdf" download>🧼 Higiene de manos</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- DESCARGABLES -->
+  <section id="descargas" class="section">
+    <h2>Descargables</h2>
+
+    <div class="card">
+      <ul class="downloads">
+        <li><a href="docs/cv-melissa-zamorano-tecnologa-informatica-biomedica.pdf" download>📄 Descargar CV</a></li>
+        <li><a href="docs/registro-prestadores.pdf" download>📄 Registro Superintendencia de Salud</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="section">
+    <h2>Contacto Profesional</h2>
+
+    <div class="card">
+      <ul class="contacto">
+        <li>✉️ <a href="mailto:melissazamoranolevy34@gmail.com">Email Profesional</a></li>
+        <li>📱 <a href="https://wa.me/56958758398">WhatsApp Directo</a></li>
+        <li>🔗 <a href="https://linkedin.com/in/melissa-z-7713a4217" target="_blank">LinkedIn Profesional</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Melissa Zamorano Levy · Salud Digital & Informática Biomédica
+  </footer>
+
+</body>
+</html>
