@@ -682,6 +682,320 @@
     </div>
   </section>
 
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Melissa Zamorano Levy · Salud Digital & Informática Biomédica</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --fondo: #050014;
+      --acento: #9b5cff;
+      --borde: #00eaff;
+      --fucsia: #ff00ff;
+      --calipso: #00eaff;
+      --texto: #eaf7ff;
+    }
+
+    body {
+      margin: 0;
+      background: var(--fondo);
+      color: var(--texto);
+      font-family: system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* CANVAS DE PARTÍCULAS */
+    #particles {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(circle at top, #1a1035 0, #050014 55%, #02000a 100%);
+    }
+
+    /* ENCABEZADO */
+    .encabezado {
+      text-align: center;
+      padding-top: 1rem;
+    }
+
+    .fotos-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 4rem;
+    }
+
+    .fotos-header h1 {
+      color: var(--acento);
+      font-size: 2rem;
+      letter-spacing: 0.15em;
+      text-shadow: 0 0 20px var(--acento);
+    }
+
+    /* FOTOS ANIMADAS */
+    .fotos-header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid var(--calipso);
+      object-fit: cover;
+      animation: glow 3s infinite ease-in-out;
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 15px var(--calipso); }
+      50% { box-shadow: 0 0 35px var(--fucsia); }
+      100% { box-shadow: 0 0 15px var(--calipso); }
+    }
+
+    /* ACREDITACIÓN GIRANDO */
+    .anim-giro {
+      animation: giro 12s linear infinite;
+    }
+
+    @keyframes giro {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* BANNER FUTURISTA */
+    .banner-futurista {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      border-top: 2px solid var(--calipso);
+      border-bottom: 2px solid var(--calipso);
+      overflow: hidden;
+      padding: 1rem 0;
+    }
+
+    .banner-futurista img {
+      width: 70%;
+      max-height: 220px;
+      object-fit: contain;
+      margin: 0 auto;
+      filter: drop-shadow(0 0 25px var(--calipso));
+      animation: mover 14s infinite linear,
+                 brillo 6s infinite alternate ease-in-out,
+                 pulsoFuturo 4s infinite ease-in-out;
+    }
+
+    @keyframes mover {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(-4%); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes brillo {
+      0% { filter: hue-rotate(0deg) brightness(1) drop-shadow(0 0 20px var(--calipso)); }
+      50% { filter: hue-rotate(60deg) brightness(1.4) drop-shadow(0 0 35px var(--fucsia)); }
+      100% { filter: hue-rotate(120deg) brightness(1.1) drop-shadow(0 0 25px #0088ff); }
+    }
+
+    @keyframes pulsoFuturo {
+      0% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.03) rotate(1deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+
+    /* INSIGNIA EPTI */
+    .insignia-epti {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .insignia-epti img {
+      width: 190px;
+      animation: holograma 4s infinite ease-in-out;
+      filter: drop-shadow(0 0 20px var(--calipso));
+    }
+
+    @keyframes holograma {
+      0% { filter: drop-shadow(0 0 10px var(--calipso)); }
+      50% { filter: drop-shadow(0 0 30px var(--fucsia)); }
+      100% { filter: drop-shadow(0 0 10px var(--calipso)); }
+    }
+
+    /* SECCIONES */
+    .section {
+      padding: 2rem 1.5rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--calipso);
+      border-radius: 0.8rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 25px rgba(0, 224, 255, 0.25);
+      transition: 0.4s ease;
+    }
+
+    h2 {
+      color: var(--acento);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px var(--acento);
+      animation: neonPulse 3s infinite ease-in-out;
+    }
+
+    @keyframes neonPulse {
+      0% { text-shadow: 0 0 10px var(--acento); }
+      50% { text-shadow: 0 0 25px var(--calipso); }
+      100% { text-shadow: 0 0 10px var(--acento); }
+    }
+
+    .checklist li {
+      list-style: "✔  ";
+      margin-bottom: 0.4rem;
+    }
+
+    .downloads li {
+      margin-bottom: 0.6rem;
+    }
+
+    .downloads a {
+      color: var(--acento);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .downloads a:hover {
+      color: var(--calipso);
+      text-shadow: 0 0 10px var(--calipso);
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      opacity: 0.7;
+      font-size: 0.85rem;
+    }
+
+    /* ANIMACIONES DE ENTRADA */
+    .section, .card, h2, h3 {
+      animation: fadeIn 1.2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .fotos-header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0;
+      }
+
+      .fotos-header img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .banner-futurista img {
+        width: 90%;
+        max-height: 180px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .fotos-header img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .banner-futurista img {
+        width: 100%;
+        max-height: 150px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CANVAS DE PARTÍCULAS -->
+  <canvas id="particles"></canvas>
+
+  <!-- ENCABEZADO -->
+  <header class="encabezado">
+    <div class="fotos-header">
+      <img src="foto-evy.png" alt="Foto Evy">
+      <h1>MELISSA ZAMORANO LEVY</h1>
+      <img src="acreditacion-nueva.png" alt="Acreditación Nueva" class="anim-giro">
+    </div>
+
+    <div class="banner-futurista">
+      <img src="imagen-futurista.png" alt="Imagen futurista">
+    </div>
+
+    <div class="insignia-epti">
+      <img src="insignia-epti.png" alt="Insignia EPTI">
+    </div>
+  </header>
+
+  <!-- PERFIL PROFESIONAL -->
+  <section id="perfil-profesional" class="section">
+    <h2>Perfil Profesional</h2>
+
+    <div class="card">
+      <p>Tecnóloga en Informática Biomédica y TENS con 16 años de experiencia clínica y trayectoria reciente en soporte e implementación de sistemas HIS (TrakCare).</p>
+      <p>Especialista en gestión de incidencias bajo metodologías ITIL, levantamiento de requerimientos, documentación funcional y capacitación masiva de usuarios clínicos y administrativos.</p>
+      <p>Conocimientos en interoperabilidad y estándares (HL7, FHIR, CIE‑11, SNOMED CT), con base en SQL y Excel avanzado para análisis y mejora operativa.</p>
+      <p>Orientada a roles de Analista/Consultora HIS, Analista de Información/BI o Proyectos TI en Salud.</p>
+    </div>
+  </section>
+
+  <!-- COMPETENCIAS -->
+  <section id="competencias" class="section">
+    <h2>Competencias Profesionales</h2>
+
+    <div class="card">
+      <h3>Informática Biomédica</h3>
+      <ul class="checklist">
+        <li>Implementación y soporte funcional HIS</li>
+        <li>Gestión de incidencias y continuidad operativa</li>
+        <li>Optimización de flujos clínicos</li>
+        <li>Calidad y trazabilidad de datos clínicos</li>
+        <li>Interoperabilidad (HL7, FHIR, SNOMED CT)</li>
+        <li>Capacitación y adopción digital</li>
+        <li>Evaluación de proyectos TI</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Técnico Superior de Enfermería (TENS)</h3>
+      <ul class="checklist">
+        <li>Administración de medicamentos</li>
+        <li>Signos vitales y registros</li>
+        <li>Curaciones simples y avanzadas</li>
+        <li>Cuidados respiratorios</li>
+        <li>Manejo de traqueostomía</li>
+        <li>Manejo de colostomía</li>
+        <li>Alimentación asistida</li>
+        <li>Vacunación particular y a domicilio</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Evaluación de Proyectos TI</h3>
+      <p>Evalúo proyectos TI determinando su viabilidad y rentabilidad, aplicando técnicas de factibilidad, flujos de caja e indicadores financieros para asesorar si una iniciativa digital conviene o no a la organización.</p>
+    </div>
+  </section>
+
   <!-- DOCUMENTOS -->
   <section id="documentos" class="section">
     <h2>Documentos Oficiales</h2>
@@ -734,6 +1048,59 @@
   <footer>
     © 2026 Melissa Zamorano Levy · Salud Digital & Informática Biomédica
   </footer>
+
+  <!-- SCRIPT DE PARTÍCULAS -->
+  <script>
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const colors = ['#00eaff', '#ff00ff', '#8a5cff', '#00bcd4'];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function createParticles(count = 80) {
+      particles = [];
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 2 + 0.5,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          color: colors[Math.floor(Math.random() * colors.length)]
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.shadowColor = p.color;
+        ctx.shadowBlur = 8;
+        ctx.fill();
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+      });
+      requestAnimationFrame(draw);
+    }
+
+    createParticles();
+    draw();
+  </script>
 
 </body>
 </html>
